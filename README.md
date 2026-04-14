@@ -1,8 +1,4 @@
 # DPI Engine - Deep Packet Inspection System
-
-
-This document explains **everything** about this project - from basic networking concepts to the complete code architecture. After reading this, you should understand exactly how packets flow through the system without needing to read the code.
-
 ---
 
 ## Table of Contents
@@ -432,8 +428,6 @@ The multi-threaded version (`dpi_mt.cpp`) adds **parallelism** for high performa
               └───────────────────────┘
 ```
 
-### Why This Design?
-
 1. **Load Balancers (LBs):** Distribute work across FPs
 2. **Fast Paths (FPs):** Do the actual DPI processing
 3. **Consistent Hashing:** Same 5-tuple always goes to same FP
@@ -551,8 +545,6 @@ class TSQueue {
     }
 };
 ```
-
-**How it works:**
 - `push()`: Producer adds item, signals waiting consumers
 - `pop()`: Consumer waits until item available, then takes it
 - `mutex`: Only one thread can access at a time
@@ -1045,9 +1037,3 @@ This DPI engine demonstrates:
 The key insight is that even HTTPS traffic leaks the destination domain in the TLS handshake, allowing network operators to identify and control application usage.
 
 ---
-
-## Questions?
-
-If you have questions about any part of this project, the code is well-commented and follows the same flow described in this document. Start with the simple version (`main_working.cpp`) to understand the concepts, then move to the multi-threaded version (`dpi_mt.cpp`) to see how parallelism is added.
-
-Happy learning! 🚀
